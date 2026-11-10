@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Item.belongsToMany(models.Order, { through: 'items_orders' });
     }
   }
   Item.init({
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Item',
     tableName: 'items',
-    underscored: true,
+    timestamps: false
   });
   return Item;
 };

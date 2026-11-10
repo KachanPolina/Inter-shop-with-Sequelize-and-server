@@ -1,0 +1,9 @@
+const { Router } = require('express');
+// --------------------------------
+const controler = require('../controllers/store');
+
+const router = new Router();
+
+router.route('/').get(controler.getAllStores);
+
+module.exports = router;

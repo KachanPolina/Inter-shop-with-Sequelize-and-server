@@ -1,5 +1,5 @@
 const http = require('http');
-require.apply('dotenv').config;
+require('dotenv').config();
 // --------------------------
 const app = require('./src/app');
 const db = require('./src/db/models');
@@ -30,13 +30,17 @@ const syncModel = async (model) => {
   }
 };
 
-const syncModels = async () => {F
+const syncModels = async () => {
   try {
     await db.sequelize.sync({alter:true})
     console.log('Sync with models has been done succsessfully')
   } catch (error) {
-    console.log(`Cant sync tables`.error.message);
+    console.log(`Cant sync tables`, error.message);
   }
 }
 
-// syncModel()
+// syncModels()
+
+server.listen(PORT, HOST_NAME, () => 
+  console.log(`Server running at http://${HOST_NAME}:${PORT}`)
+)
