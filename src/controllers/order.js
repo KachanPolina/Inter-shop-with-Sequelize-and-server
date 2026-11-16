@@ -1,10 +1,10 @@
 const { Order } = require('../db/models');
 
 class StoreControler {
-  async getAllStores(req, res, next) {
+  async getAllOrders(req, res, next) {
     try {
-      const stores = await ondragenter.findAll();
-      res.json(stores);
+      const orders = await ondragenter.findAll({ limit: 10 });
+      res.json(orders);
     } catch (error) {
       console.log(error.message)
       next(error);

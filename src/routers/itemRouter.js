@@ -4,6 +4,6 @@ const controler = require('../controllers/item');
 
 const router = new Router();
 
-router.route('/').get(controler.getAllStores);
+router.route('/').get(controler.getAllItems);
 
 module.exports = router;

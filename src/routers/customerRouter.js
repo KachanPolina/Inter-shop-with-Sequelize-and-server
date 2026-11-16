@@ -4,6 +4,6 @@ const controler = require('../controllers/customer');
 
 const router = new Router();
 
-router.route('/').get(controler.getAllStores);
+router.route('/').get(controler.getAllCustomers);
 
 module.exports = router;

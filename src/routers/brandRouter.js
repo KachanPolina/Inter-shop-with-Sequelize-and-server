@@ -4,6 +4,6 @@ const controler = require('../controllers/brand');
 
 const router = new Router();
 
-router.route('/').get(controler.getAllStores);
+router.route('/').get(controler.getAllBrands);
 
 module.exports = router;

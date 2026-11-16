@@ -1,10 +1,10 @@
 const { ItemType } = require('../db/models');
 
 class StoreControler {
-  async getAllStores(req, res, next) {
+  async getAllTypes(req, res, next) {
     try {
-      const stores = await ItemType.findAll();
-      res.json(stores);
+      const types = await ItemType.findAll({ limit: 10 });
+      res.json(types);
     } catch (error) {
       console.log(error.message)
       next(error);
