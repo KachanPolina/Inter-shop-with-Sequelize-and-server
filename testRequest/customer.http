@@ -1,1 +1,12 @@
 GET http://127.0.0.1:5000/api/customers
+
+### 
+PUT http://127.0.0.1:5000/api/customers HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Polina Ka",
+  "email": "testEmail@gmail.com",
+  "password": "test123",
+  "id": 1
+}

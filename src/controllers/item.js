@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Item } = require('../db/models');
 
 class StoreControler {
@@ -6,17 +7,24 @@ class StoreControler {
       const items = await Item.findAll({ limit: 10 });
       res.json(items);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
       next(error);
     }
   }
 
-  async getAllWhereIdBigger(req, res, next) {
+  async getItemsWhereIdBigger(req, res, next) {
     try {
-      const stores = await Item.findAll({ limit: 10 });
-      res.json(stores);
+      const { id } = req.params;
+      const items = await Item.findAll({
+        where: {
+          id: {
+            [Op.gt]: id, 
+          },
+        },
+      });
+      res.json(items);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
       next(error);
     }
   }
