@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Order.belongsToMany(models.Item, { through: 'items_orders' });
+      Order.belongsTo(models.Customer, {
+        foreignKey: 'customer_id',
+      });
     }
   }
   Order.init(
@@ -23,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Order',
       tableName: 'orders',
-      timestamps: false
+      timestamps: false,
     },
   );
   return Order;

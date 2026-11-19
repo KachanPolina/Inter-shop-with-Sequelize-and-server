@@ -1,5 +1,8 @@
+const { Sequelize } = require('sequelize');
+const { fn, col, literal } = require('sequelize');
 const { Op } = require('sequelize');
-const { Customer } = require('../db/models');
+const { Customer, Order } = require('../db/models');
+const order = require('./order');
 
 class StoreControler {
   async getAllCustomers(req, res, next) {
@@ -16,7 +19,7 @@ class StoreControler {
     try {
       const { id, name, email, password } = req.body;
       const result = await Customer.update(
-        { name, email, password},
+        { name, email, password },
         {
           where: {
             id: {

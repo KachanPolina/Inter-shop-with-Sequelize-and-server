@@ -27,12 +27,6 @@ class StoreControler {
         .map((name) => name.trim())
         .filter((name) => name.length > 0);
 
-      if (brandsArray.length === 0) {
-        return res.status(400).json({
-          message: 'Список брендів порожній',
-        });
-      }
-
       const brandsToSend = await Brand.findAll({
         where: {
           title: {
