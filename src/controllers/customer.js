@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 const { Customer, Order } = require('../db/models');
 const order = require('./order');
 
-class StoreControler {
+class CustomerControler {
   async getAllCustomers(req, res, next) {
     try {
       const customers = await Customer.findAll({ limit: 10 });
@@ -45,4 +45,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new CustomerControler();

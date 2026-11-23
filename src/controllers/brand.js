@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const { Brand } = require('../db/models');
 
-class StoreControler {
+class BrandControler {
   async getAllBrands(req, res, next) {
     try {
       const brands = await Brand.findAll({ limit: 10 });
@@ -70,4 +70,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new BrandControler();

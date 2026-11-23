@@ -1,6 +1,6 @@
 const { Order } = require('../db/models');
 
-class StoreControler {
+class OrderControler {
   async getAllOrders(req, res, next) {
     try {
       const orders = await ondragenter.findAll({ limit: 10 });
@@ -12,4 +12,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new OrderControler();

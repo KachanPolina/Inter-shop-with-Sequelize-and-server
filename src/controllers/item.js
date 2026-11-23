@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const { Item } = require('../db/models');
 
-class StoreControler {
+class ItemControler {
   async getAllItems(req, res, next) {
     try {
       const items = await Item.findAll({ limit: 10 });
@@ -30,4 +30,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new ItemControler();

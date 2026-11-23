@@ -1,6 +1,6 @@
 const { ItemCategory } = require('../db/models');
 
-class StoreControler {
+class ItemCategoryControler {
   async getAllCategories(req, res, next) {
     try {
       const categories = await ItemCategory.findAll({ limit: 10 });
@@ -12,4 +12,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new ItemCategoryControler();

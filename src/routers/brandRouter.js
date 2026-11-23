@@ -8,7 +8,5 @@ router.route('/')
   .get(controler.getAllBrands)
   .delete(controler.deleteBrands)
 router.route('/search').get(controler.getSertainBrands)
-router.route('/search').get(controler.getSertainBrands)
-// router.get('/search', controler.getSertainBrands);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const { ItemType } = require('../db/models');
 
-class StoreControler {
+class ItemTypeControler {
   async getAllTypes(req, res, next) {
     try {
       const types = await ItemType.findAll({ limit: 10 });
@@ -12,4 +12,4 @@ class StoreControler {
   }
 }
 
-module.exports = new StoreControler();
+module.exports = new ItemTypeControler();
