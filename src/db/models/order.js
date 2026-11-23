@@ -8,9 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Order.belongsToMany(models.Item, { through: 'items_orders' });
+      Order.belongsToMany(models.Item, {
+        through: 'items_orders',
+        foreignKey: 'order_id',
+        otherKey: 'item_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      });
       Order.belongsTo(models.Customer, {
         foreignKey: 'customer_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       });
     }
   }
@@ -18,7 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       code: DataTypes.STRING,
       date: DataTypes.DATE,
-      customer_id: DataTypes.INTEGER,
+      customer_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       amount: DataTypes.INTEGER,
       paid: DataTypes.BOOLEAN,
     },

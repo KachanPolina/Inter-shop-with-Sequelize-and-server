@@ -17,9 +17,9 @@ class BrandControler {
       const { brands } = req.query;
 
       if (!brands || !brands.trim()) {
-        return res.status(400).json({
-          message: 'Необхідно передати список брендів',
-        });
+        const error = new Error('Необхідно передати список брендів');
+        error.status = 400;
+        throw error;
       }
 
       const brandsArray = brands
@@ -47,9 +47,9 @@ class BrandControler {
       const { brands } = req.body;
 
       if (!Array.isArray(brands) || !brands || brands.length === 0) {
-        return res.status(400).json({
-          message: 'Необхідно передати список брендів',
-        });
+        const error = new Error('Необхідно передати список брендів');
+        error.status = 400;
+        throw error;
       }
 
       const deletedCount = await Brand.destroy({

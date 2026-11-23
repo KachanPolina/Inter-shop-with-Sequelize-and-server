@@ -32,9 +32,9 @@ class CustomerControler {
       const updatedRows = result[0];
 
       if (updatedRows === 0) {
-        return res.status(404).json({
-          message: 'Покупця не знайдено',
-        });
+        const error = new Error('Покупця не знайдено');
+        error.status = 404;
+        throw error;
       }
       const updatedCustomer = await Customer.findByPk(id);
       res.json(updatedCustomer);
