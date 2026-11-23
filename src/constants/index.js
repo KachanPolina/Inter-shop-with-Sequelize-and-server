@@ -274,7 +274,7 @@ module.exports = {
     {
       code: 'ORD-2026-002',
       date: '2026-11-03',
-      customer_id: 2,
+      customer_id: 1,
       amount: 1100,
       paid: true,
     },

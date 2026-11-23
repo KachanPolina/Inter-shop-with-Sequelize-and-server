@@ -10,4 +10,7 @@ router
   .get(controler.getAllCustomers)
   .put(validateCustomer, controler.updateCustomer);
 
+router.route('/top').get(controler.getTopCustomer);
+router.route('/richest').get(controler.getRichestCustomer);
+
 module.exports = router;
