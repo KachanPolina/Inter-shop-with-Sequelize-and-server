@@ -1,0 +1,39 @@
+'use strict';
+const { Model } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class ItemOrder extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      ItemOrder.belongsTo(models.Item, {
+        foreignKey: 'item_id',
+      });
+
+      ItemOrder.belongsTo(models.Order, {
+        foreignKey: 'order_id',
+      });
+    }
+  }
+  ItemOrder.init(
+    {
+      item_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      order_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'ItemOrder',
+      tableName: 'items_orders',
+      timestamps: false,
+    },
+  );
+  return ItemOrder;
+};
