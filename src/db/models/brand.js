@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    logo: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Brand',

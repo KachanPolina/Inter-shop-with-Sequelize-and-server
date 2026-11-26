@@ -1,8 +1,7 @@
 const { Sequelize } = require('sequelize');
 const { fn, col, literal } = require('sequelize');
 const { Op } = require('sequelize');
-const { Customer, Order, ItemOrder, Item } = require('../db/models');
-const order = require('./order');
+const { Customer, Order, Item } = require('../db/models');
 
 class CustomerControler {
   async getAllCustomers(req, res, next) {

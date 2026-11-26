@@ -7,5 +7,6 @@
   "20261106144703-create-model.js",
   "20261106145132-create-order.js",
   "20261106145346-create-item.js",
-  "20261123122704-create-item-order.js"
+  "20261123122704-create-item-order.js",
+  "20261126095857-add-logo-to-brands.js"
 ]

@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Brand } = require('../db/models');
+const { Brand, sequelize } = require('../db/models');
 
 class BrandControler {
   async getAllBrands(req, res, next) {
@@ -65,6 +65,42 @@ class BrandControler {
         .json({ message: 'Видалення успішне', deletedCount });
     } catch (error) {
       console.log(error.message);
+      next(error);
+    }
+  }
+
+  async changeImage(req, res, next) {
+    const t = await sequelize.transaction();
+    try {
+      const {
+        file: { filename },
+        params: { brandId },
+      } = req;
+      const [count, [uploatedBrands]] = await Brand.update(
+        { logo: filename },
+        {
+          where: {
+            id: brandId,
+          },
+          returning: ['id', 'title'],
+          raw: true,
+          fields: ['logo'],
+          transaction: t,
+        },
+      );
+
+      if (count > 0) {
+        await t.commit()
+        console.log(`Result is: ${JSON.stringify(uploatedBrands, null, 2)}`);
+        res.status(200).json(uploatedBrands);
+      } else {
+        t.rollback();
+        console.log(`Brand not found`);
+        next(createError(404, 'Brand not found'));
+      }
+    } catch (error) {
+      console.log('Error is ', error.message);
+      await t.rollback()
       next(error);
     }
   }

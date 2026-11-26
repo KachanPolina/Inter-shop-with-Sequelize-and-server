@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
   Customer.init(
     {
       name: DataTypes.STRING,
-      email: DataTypes.STRING,
+      email: {
+        type: DataTypes.STRING,
+        unique: true
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
